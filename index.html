@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon vs Tiger Game</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding-top: 20px;
+        }
+        .game-container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 20px;
+        }
+        .choice {
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .choice:hover {
+            transform: scale(1.05);
+            border-color: #888;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .timer {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .result-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 200px; /* Adjust as needed */
+        }
+        .result-image {
+            width: 150px;
+            margin-bottom: 10px;
+            display: none; /* Initially hidden */
+        }
+        .history-container {
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .history-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #444;
+        }
+        .history-list-wrapper {
+            overflow: hidden;
+            width: 320px; /* Adjust to fit 5 items */
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .history-list-container {
+            display: flex;
+            flex-direction: row;
+            transition: transform 0.3s ease-in-out;
+        }
+        .history-item {
+            width: 60px; /* Adjust size as needed */
+            height: 60px; /* Adjust size as needed */
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-right: 5px;
+            transition: transform 0.3s ease;
+            opacity: 0.8; /* Slight transparency */
+        }
+        .history-item:hover {
+            transform: scale(1.1);
+            opacity: 1; /* Full opacity on hover */
+        }
+        .arrow-button {
+            cursor: pointer;
+            background-color: #ddd;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            margin: 0 10px;
+            font-size: 18px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .arrow-button:hover {
+            background-color: #bbb;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Dragon vs Tiger Game</h1>
+
+    <!-- Container for result image and text -->
+    <div class="result-container">
+        <img src="" alt="Result" id="resultImage" class="result-image">
+        <div class="result" id="resultDisplay">Make your choice!</div>
+    </div>
+
+    <div class="game-container">
+        <img src="dragon.jpg" alt="Dragon" class="choice" id="dragon" onclick="makeChoice('Dragon')" width="200">
+        <img src="tiger.jpg" alt="Tiger" class="choice" id="tiger" onclick="makeChoice('Tiger')" width="200">
+    </div>
+
+    <div class="timer" id="timerDisplay">Time left: 90 seconds</div>
+
+    <!-- History Section -->
+    <div class="history-container">
+        <button class="arrow-button" id="leftArrow" onclick="scrollHistory(-1)">&#8249;</button>
+        <div class="history-list-wrapper">
+            <div class="history-list-container" id="historyList"></div>
+        </div>
+        <button class="arrow-button" id="rightArrow" onclick="scrollHistory(1)">&#8250;</button>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
